@@ -105,10 +105,8 @@ export const SingleImageDefaultContainer = ({
           {withShapes && (
             <div className="bg-background-muted absolute top-1/2 right-0 z-0 aspect-5/3 w-3/4 -translate-y-1/2 transform rounded-2xl"></div>
           )}
-          <div
-            className={`relative z-10 w-full max-w-4xl overflow-hidden rounded-2xl ${shadowClass}`}
-          >
-            <ContentSdkImage field={PromoImageOne} className="h-full w-full" />
+          <div className={`relative z-10 w-full overflow-hidden rounded-2xl ${shadowClass}`}>
+            <ContentSdkImage field={PromoImageOne} className="" />
           </div>
         </div>
       </div>
