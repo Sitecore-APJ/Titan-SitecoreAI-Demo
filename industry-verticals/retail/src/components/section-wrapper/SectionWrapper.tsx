@@ -21,17 +21,17 @@ export const Default = ({ params, fields, rendering }: SectionWrapperProps) => {
   return (
     <section className={`component section-wrapper pt-14 pb-10 ${styles}`} id={id}>
       <div className="container flex flex-col items-center">
-        {forTitan && (
+        {forTitan ? (
           <h2 className="text-xl">
             <Text field={fields.Title} />
             {!hideAccentLine && <AccentLine className="ml-auto !h-4 w-[8ch]" />}
           </h2>
+        ) : (
+          <h2>
+            <Text field={fields.Title} />
+            {!hideAccentLine && <AccentLine className="ml-auto !h-4 w-[8ch]" />}
+          </h2>
         )}
-        <h2>
-          <Text field={fields.Title} />
-          {!hideAccentLine && <AccentLine className="ml-auto !h-4 w-[8ch]" />}
-        </h2>
-
         <div className="mt-5 mb-12 w-full">
           <Placeholder name={placeholderKey} rendering={rendering} />
         </div>
