@@ -11,14 +11,15 @@
   --color-background-surface: #fafafa;
 
   --color-accent: #c1a25f;
+  /*c48d35 */
 
   --color-success: #2ec1ac;
   --color-danger: #e97171;
 
   --color-border: #e8e8e8;
 
-  --font-heading: 'Manrope', sans-serif;
-  --font-body: 'Manrope', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Poppins', sans-serif;
 
   --radius-base: 0.5rem;
 

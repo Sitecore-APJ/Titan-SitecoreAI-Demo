@@ -89,6 +89,33 @@ export const SingleImageContainer = ({
   );
 };
 
+export const SingleImageDefaultContainer = ({
+  PromoImageOne,
+  withShapes,
+  withShadows,
+}: PromoImageGroupProps): JSX.Element => {
+  const shadowClass = isShadowClassActive(withShadows ?? false);
+  return (
+    <>
+      {withShapes && (
+        <div className="bg-background-muted absolute top-0 left-0 z-0 aspect-6/5 w-2/3 rounded-2xl"></div>
+      )}
+      <div>
+        <div className={clsx({ 'm-4 md:m-9 md:mb-6 xl:m-15 xl:mb-8': withShapes })}>
+          {withShapes && (
+            <div className="bg-background-muted absolute top-1/2 right-0 z-0 aspect-5/3 w-3/4 -translate-y-1/2 transform rounded-2xl"></div>
+          )}
+          <div
+            className={`relative z-10 w-full max-w-4xl overflow-hidden rounded-2xl ${shadowClass}`}
+          >
+            <ContentSdkImage field={PromoImageOne} className="h-full w-full" />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
 export const MultipleImageContainer = ({
   PromoImageOne,
   PromoImageTwo,
@@ -170,6 +197,38 @@ export const Default = (props: PromoProps): JSX.Element => {
               withShadows={withShadows}
             />
           )}
+        </div>
+
+        <div className={`col-span-full ${secondColumnSize} ${justifyContentClass}`}>
+          <PromoContent {...props} />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export const TitanPromo = (props: PromoProps): JSX.Element => {
+  const id = props.params.RenderingIdentifier;
+  const isPromoReversed = !props?.params?.styles?.includes(LayoutStyles.Reversed)
+    ? ''
+    : 'order-last';
+  const showSingleImage = !props?.params?.styles?.includes(PromoFlags.ShowMultipleImages);
+  const withShapes = !props?.params?.styles?.includes(PromoFlags.HidePromoShapes);
+  const withShadows = !props?.params?.styles?.includes(PromoFlags.HidePromoShadows);
+
+  const justifyContentClass = !showSingleImage ? 'justify-self-start' : '';
+  const firstColumnSize = showSingleImage ? 'lg:col-span-6' : 'lg:col-span-7';
+  const secondColumnSize = showSingleImage ? 'lg:col-span-6' : 'lg:col-span-5';
+
+  return (
+    <section className={`${props.params.styles} py-20`} id={id ? id : undefined}>
+      <div className="container grid grid-cols-1 place-items-center gap-10 lg:grid-cols-12">
+        <div className={`${isPromoReversed} col-span-full ${firstColumnSize} relative w-full`}>
+          <SingleImageDefaultContainer
+            PromoImageOne={props.fields.PromoImageOne}
+            withShapes={withShapes}
+            withShadows={withShadows}
+          />
         </div>
 
         <div className={`col-span-full ${secondColumnSize} ${justifyContentClass}`}>

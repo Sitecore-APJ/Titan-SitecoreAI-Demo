@@ -13,7 +13,8 @@
 
   --color-border: #846854;
 
-  --font-heading: 'Libre Baskerville', serif;
+  /* ORIGINAL FONT HEADING --font-heading: 'Libre Baskerville', serif; */
+  --font-heading: 'Poppins', sans-serif; /* Changed to Poppins for Titan brand */
   --font-body: 'Poppins', sans-serif;
 
   --radius-base: 0rem;

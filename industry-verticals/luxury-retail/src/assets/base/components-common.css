@@ -55,7 +55,7 @@
 }
 
 .navigation-item {
-  @apply text-foreground hover:text-foreground-light font-light transition-colors hover:!no-underline lg:whitespace-nowrap;
+  @apply text-foreground hover:text-foreground-light font-light transition-colors hover:!no-underline lg:whitespace-nowrap uppercase text-sm;
 }
 
 .navigation-item-primary {

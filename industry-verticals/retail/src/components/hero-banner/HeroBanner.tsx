@@ -106,9 +106,9 @@ const HeroBannerCommonNoInset = ({
   }
 
   return (
-    <div className={`component hero-banner ${styles} relative flex items-center`} id={id}>
+    <div className={`component hero-banner ${styles} relative mb-12 flex items-center`} id={id}>
       {/* Background Media */}
-      <div className="absolute z-0">
+      <div className="z-0">
         {!isPageEditing && fields?.Video?.value?.src ? (
           <video
             className="h-full w-full object-cover"
