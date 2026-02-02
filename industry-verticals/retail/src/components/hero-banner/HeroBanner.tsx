@@ -83,6 +83,63 @@ const HeroBannerCommon = ({
   );
 };
 
+const HeroBannerCommonNoInset = ({
+  params,
+  fields,
+  children,
+}: HeroBannerProps & {
+  children: React.ReactNode;
+}) => {
+  const { page } = useSitecore();
+  const { styles, RenderingIdentifier: id } = params;
+  const isPageEditing = page.mode.isEditing;
+  const hideGradientOverlay = styles?.includes(HeroBannerStyles.HideGradientOverlay);
+
+  if (!fields) {
+    return isPageEditing ? (
+      <div className={`component hero-banner ${styles}`} id={id}>
+        [HERO BANNER]
+      </div>
+    ) : (
+      <></>
+    );
+  }
+
+  return (
+    <div className={`component hero-banner ${styles} relative flex items-center`} id={id}>
+      {/* Background Media */}
+      <div className="absolute z-0">
+        {!isPageEditing && fields?.Video?.value?.src ? (
+          <video
+            className="h-full w-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={fields.Image?.value?.src}
+          >
+            <source src={fields.Video?.value?.src} type="video/webm" />
+          </video>
+        ) : (
+          <>
+            <ContentSdkImage
+              field={fields.Image}
+              className="h-full w-full object-cover md:object-bottom"
+              priority
+            />
+          </>
+        )}
+        {/* Gradient overlay to fade image/video at bottom */}
+        {!hideGradientOverlay && (
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent from-85% to-white"></div>
+        )}
+      </div>
+
+      {children}
+    </div>
+  );
+};
+
 export const Default = ({ params, fields, rendering }: HeroBannerProps) => {
   const styles = params.styles || '';
   const hideAccentLine = styles.includes(CommonStyles.HideAccentLine);
@@ -129,6 +186,14 @@ export const Default = ({ params, fields, rendering }: HeroBannerProps) => {
         </div>
       </div>
     </HeroBannerCommon>
+  );
+};
+
+export const SimpleImageBanner = ({ params, fields, rendering }: HeroBannerProps) => {
+  return (
+    <HeroBannerCommonNoInset params={params} fields={fields} rendering={rendering}>
+      <div></div>
+    </HeroBannerCommonNoInset>
   );
 };
 
