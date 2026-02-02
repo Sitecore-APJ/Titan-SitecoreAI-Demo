@@ -16,10 +16,17 @@ export const Default = ({ params, fields, rendering }: SectionWrapperProps) => {
   const { styles, RenderingIdentifier: id } = params;
   const hideAccentLine = styles?.includes(CommonStyles.HideAccentLine);
   const placeholderKey = `section-wrapper-content-${params.DynamicPlaceholderId}`;
+  const forTitan = params?.styles?.includes('small-text');
 
   return (
     <section className={`component section-wrapper pt-14 pb-10 ${styles}`} id={id}>
       <div className="container flex flex-col items-center">
+        {forTitan && (
+          <h2 className="text-xl">
+            <Text field={fields.Title} />
+            {!hideAccentLine && <AccentLine className="ml-auto !h-4 w-[8ch]" />}
+          </h2>
+        )}
         <h2>
           <Text field={fields.Title} />
           {!hideAccentLine && <AccentLine className="ml-auto !h-4 w-[8ch]" />}
