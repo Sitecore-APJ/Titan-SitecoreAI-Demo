@@ -145,7 +145,7 @@ export const MultipleImageContainer = ({
         </div>
         <div className="relative w-full md:w-2/3">
           {withShapes && (
-            <div className="bg-background-muted absolute right-0 z-0 aspect-[495/422] w-3/4 rounded-2xl md:-top-10 xl:-top-15"></div>
+            <div className="bg-background-muted absolute right-0 z-0 aspect-495/422 w-3/4 rounded-2xl md:-top-10 xl:-top-15"></div>
           )}
           <div className={`relative aspect-3/2 overflow-visible rounded-2xl ${marginClass} z-10`}>
             <div
@@ -246,7 +246,7 @@ export const WithFullImage = (props: PromoProps): JSX.Element => {
   return (
     <section className={`${props.params.styles} py-20`} id={id ? id : undefined}>
       <div className={`container flex ${isPromoReversed}`}>
-        <div className="relative my-10 aspect-[1232/608] overflow-hidden rounded-2xl">
+        <div className="relative my-10 aspect-1232/608 overflow-hidden rounded-2xl">
           <ContentSdkImage
             field={props.fields.PromoImageTwo}
             className="h-full w-full object-cover"

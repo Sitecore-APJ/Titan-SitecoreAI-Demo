@@ -115,6 +115,7 @@ export const ImageGrid = (props: FeaturesProps) => {
 export const ThreeColGridCentered = (props: FeaturesProps) => {
   // results of the graphql
   const results = props.fields.data.datasource.children.results;
+  const showBgCircle = !props.params.styles?.includes('hide-bg-circle');
 
   return (
     <FeatureWrapper props={props}>
@@ -126,7 +127,9 @@ export const ThreeColGridCentered = (props: FeaturesProps) => {
           return (
             <div className="flex flex-col items-center justify-start 2xl:w-80" key={index}>
               {/* Image */}
-              <div className="bg-accent mb-7 flex h-20 w-20 items-center justify-center rounded-full">
+              <div
+                className={`${showBgCircle && 'bg-accent'} mb-7 flex h-20 w-20 items-center justify-center rounded-full`}
+              >
                 <Image field={image} />
               </div>
               {/* Title and Description */}
@@ -167,7 +170,7 @@ export const NumberedGrid = (props: FeaturesProps) => {
               </h1>
               {/* Title and Description */}
               <div>
-                <div className="text-accent group-hover:text-background mb-4 text-2xl leading-8 font-[700]">
+                <div className="text-accent group-hover:text-background mb-4 text-2xl leading-8 font-bold">
                   <Text field={title} />
                 </div>
                 <div className="text-background-muted-dark group-hover:text-background leading-7">

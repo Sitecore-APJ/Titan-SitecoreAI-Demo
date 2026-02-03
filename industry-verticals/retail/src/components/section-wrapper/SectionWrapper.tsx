@@ -24,12 +24,12 @@ export const Default = ({ params, fields, rendering }: SectionWrapperProps) => {
         {forTitan ? (
           <h2 className="text-xl">
             <Text field={fields.Title} />
-            {!hideAccentLine && <AccentLine className="ml-auto !h-4 w-[8ch]" />}
+            {!hideAccentLine && <AccentLine className="ml-auto h-4! w-[8ch]" />}
           </h2>
         ) : (
           <h2>
             <Text field={fields.Title} />
-            {!hideAccentLine && <AccentLine className="ml-auto !h-4 w-[8ch]" />}
+            {!hideAccentLine && <AccentLine className="ml-auto h-4! w-[8ch]" />}
           </h2>
         )}
         <div className="mt-5 mb-12 w-full">
